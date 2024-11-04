@@ -41,7 +41,7 @@
             '';
             installPhase = ''
               mkdir -p $out
-              cp document.pdf $out/
+              cp doc.pdf $out/
             '';
           };
         };
