@@ -1,11 +1,13 @@
 \documentclass{beamer}
 \usepackage{fontspec}
 \usepackage{graphicx}
-\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{minted}
 \usepackage{polski}
-\usepackage[utf8]{inputenc}
 
-% \graphicspath{ {./assets/} }
+% build logs whispered to me that it's not needed, but I'll keep it just in case
+\usepackage[utf8]{inputenc} 
 \usetheme{Copenhagen}
 
 \title{Nix i NixOS}
@@ -18,6 +20,10 @@
     \titlepage
 \end{frame}
 
+\begin{frame}
+    \includegraphics[width=0.75\linewidth]{./assets/NixOS_logo.png}
+\end{frame}
+
 \begin{frame}{Wprowadzenie do NixOS}
     \begin{itemize}
         \item Historia i filozofia
@@ -25,6 +31,33 @@
         \item Nieniszczące aktualizacje
     \end{itemize}
 \end{frame}
+
+\begin{frame}{Historia i filozofia}
+    \begin{figure}
+        \includegraphics[height=0.75\textheight]{./assets/eelco.jpg}
+        \caption*{\scriptsize Źródło: Eelco Visser, Flickr, \url{https://www.flickriver.com/photos/eelcovisser/3618182654/}}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{deklaratywna konfiguracja}
+    \begin{figure}
+    \caption*{\small Plik wygenerowany poleceniem \texttt{nixos-generate-config --dir .} (bez komentarzy)}
+    \begin{minted}[fontsize=\small, linenos]{nix}
+    { config, lib, pkgs, ... }:
+
+    {
+      imports =
+        [ # Include the results of the hardware scan.
+          ./hardware-configuration.nix
+        ];
+      boot.loader.systemd-boot.enable = true;
+      boot.loader.efi.canTouchEfiVariables = true;
+      system.stateVersion = "24.11"; # Did you read the comment?
+    }
+    \end{minted}
+    \end{figure}
+\end{frame}
+
 
 \begin{frame}{Nix - Menedżer pakietów}
     \begin{itemize}
@@ -58,14 +91,6 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Demo na żywo}
-    \begin{itemize}
-        \item Kompilacja `nano` za pomocą derywacji
-        \item Niestandardowa derywacja
-        \item `nixos-rebuild switch`
-    \end{itemize}
-\end{frame}
-
 \begin{frame}{Przykłady zastosowań NixOS}
     \begin{itemize}
         \item CI/CD
@@ -82,11 +107,10 @@
 \end{frame}
 
 \begin{frame}{Wyzwania: krzywa uczenia się}
-    \centering
-    \includegraphics[width=0.8\linewidth, height=0.8\textheight]{./assets/nixoscurve.jpg}
-    \caption{This is the title of the image}
-    \captionsetup{justification=centering} % Center the caption if needed
-    \caption*{\footnotesize Source: Author or Website Name} % Use caption* for non-numbered source text
+    \begin{figure}
+        \includegraphics[width=0.75\linewidth, height=0.75\textheight]{./assets/nixoscurve.jpg}
+        \caption*{\scriptsize Źródło: \url{https://discourse.nixos.org/t/probably-the-best-lecture-of-nix-fundamentals-on-the-internet/9893}} % Use caption* for non-numbered source text
+    \end{figure}
 \end{frame}
 
 \begin{frame}{Narzędzia związane z NixOS}
@@ -127,6 +151,24 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Demo na żywo}
+    \begin{itemize}
+        \item Kompilacja `nano` za pomocą derywacji
+        \item Niestandardowa derywacja
+        \item `nixos-rebuild switch`
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Podobne narzędzia}
+    \begin{itemize}
+        \item Ansible
+        \item Docker
+        \item Fedora Silverblue
+        \item asdf,mise,
+        \item Flatpak, Appimage, Snap
+        \item Brew
+    \end{itemize}
+\end{frame}
 \begin{frame}{Podsumowanie i pytania}
     \begin{itemize}
         \item Podsumowanie korzyści NixOS

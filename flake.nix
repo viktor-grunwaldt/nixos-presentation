@@ -15,13 +15,15 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
         tex = pkgs.texlive.combine {
-          inherit (pkgs.texlive) scheme-small latex-bin latexmk beamer caption polski;
+          inherit (pkgs.texlive) scheme-small latex-bin latexmk beamer polski minted;
         };
       in
       rec {
         devShells.default = with pkgs; mkShell {
           packages = [
             texlab            
+            inkscape
+            imagemagick
           ];
           shellHook = ''
             fish -C "source ~/.config/home-manager/venv.fish" -i && exit
@@ -34,6 +36,7 @@
             buildInputs = [
               pkgs.coreutils
               tex
+              python311Packages.pygments
             ];
             phases = [
               "unpackPhase"
