@@ -1,0 +1,125 @@
+\documentclass{beamer}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+
+% \graphicspath{ {./assets/} }
+\usetheme{Copenhagen}
+
+\title{NixOS - System Operacyjny Nowej Generacji}
+\author{Viktor Grünwaldt}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Wprowadzenie do NixOS}
+    \begin{itemize}
+        \item Historia i filozofia
+        \item Deklaratywna konfiguracja
+        \item Nieniszczące aktualizacje
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Nix - Menedżer pakietów}
+    \begin{itemize}
+        \item Functional package management
+        \item Izolacja pakietów
+        \item `/nix/store`
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Deklaratywna konfiguracja systemu}
+    \begin{itemize}
+        \item Plik `configuration.nix`
+        \item Usługi i pakiety
+        \item Utrzymanie środowisk
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{System budowania i kompilowania}
+    \begin{itemize}
+        \item Derywacje
+        \item Zależności i hermetyzacja
+        \item Nie zmienność
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Zaawansowane funkcje NixOS}
+    \begin{itemize}
+        \item Rollbacki systemowe
+        \item Bezpieczne aktualizacje
+        \item Wersje pakietów
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Demo na żywo}
+    \begin{itemize}
+        \item Kompilacja `nano` za pomocą derywacji
+        \item Niestandardowa derywacja
+        \item `nixos-rebuild switch`
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Przykłady zastosowań NixOS}
+    \begin{itemize}
+        \item CI/CD
+        \item Zarządzanie infrastrukturą
+        \item Kontenery i VM
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Zalety i wyzwania}
+    \begin{itemize}
+        \item Zalety: deterministyczne środowisko, stabilność
+        \item Wyzwania: krzywa uczenia się, kompatybilność
+        \includegraphics{ assets/nixoscurve.jpg}
+
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Narzędzia związane z NixOS}
+    \begin{itemize}
+        \item flake + experimental-cli
+        \item disko
+        \item nixos-anywhere
+        \item home-manager
+        \item lix/tvix
+        \item guix
+        \item nixos-alien
+        \item nixos-sops
+        \item nixos wiki
+        \item nix pills
+        \item zero to nix
+        \item nix.dev
+        \item nix manual
+        \item official nixos wiki
+        \item \{lang\}2nix
+        \item hydra
+        \item nix shell
+        \item nix develop
+        \item nix build
+        \item nix gc
+        \item devenv
+        \item devbox
+        \item cachix
+        \item overlays
+        \item pins/npins
+        \item nixpkgs
+        \item nixbsd
+        \item lanzaboote
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Podsumowanie i pytania}
+    \begin{itemize}
+        \item Podsumowanie korzyści NixOS
+        \item Pytania
+    \end{itemize}
+\end{frame}
+
+\end{document}
