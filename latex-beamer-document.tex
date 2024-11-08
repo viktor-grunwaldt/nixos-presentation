@@ -1,13 +1,14 @@
 \documentclass{beamer}
 \usepackage{fontspec}
 \usepackage{graphicx}
+\usepackage{caption}
 \usepackage{polski}
 \usepackage[utf8]{inputenc}
 
 % \graphicspath{ {./assets/} }
 \usetheme{Copenhagen}
 
-\title{NixOS - System Operacyjny Nowej Generacji}
+\title{Nix i NixOS}
 \author{Viktor Grünwaldt}
 \date{\today}
 
@@ -77,11 +78,15 @@
     \begin{itemize}
         \item Zalety: deterministyczne środowisko, stabilność
         \item Wyzwania: krzywa uczenia się, kompatybilność
-        \begin{frame}
-          \centering
-          \includegraphics[width=\linewidth, height=0.8\textheight]{./assets/nixoscurve.jpg}
-        \end{frame}
     \end{itemize}
+\end{frame}
+
+\begin{frame}{Wyzwania: krzywa uczenia się}
+    \centering
+    \includegraphics[width=0.8\linewidth, height=0.8\textheight]{./assets/nixoscurve.jpg}
+    \caption{This is the title of the image}
+    \captionsetup{justification=centering} % Center the caption if needed
+    \caption*{\footnotesize Source: Author or Website Name} % Use caption* for non-numbered source text
 \end{frame}
 
 \begin{frame}{Narzędzia związane z NixOS}
@@ -101,6 +106,11 @@
         \item nix manual
         \item official nixos wiki
         \item \{lang\}2nix
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Narzędzia związane z NixOS 2}
+    \begin{itemize}
         \item hydra
         \item nix shell
         \item nix develop

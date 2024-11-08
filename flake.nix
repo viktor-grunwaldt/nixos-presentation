@@ -15,7 +15,7 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
         tex = pkgs.texlive.combine {
-          inherit (pkgs.texlive) scheme-small latex-bin latexmk beamer polski;
+          inherit (pkgs.texlive) scheme-small latex-bin latexmk beamer caption polski;
         };
       in
       rec {
@@ -54,7 +54,7 @@
             '';
             installPhase = ''
               mkdir -p $out
-              cp doc.pdf $out/
+              cp ${name}.pdf $out/
             '';
           };
         };
