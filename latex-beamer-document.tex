@@ -3,7 +3,8 @@
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{hyperref}
-\usepackage{minted}
+% \usepackage{minted}
+\usepackage{listings}
 \usepackage{polski}
 
 % build logs whispered to me that it's not needed, but I'll keep it just in case
@@ -28,7 +29,7 @@
     \begin{itemize}
         \item Historia i filozofia
         \item Deklaratywna konfiguracja
-        \item Nieniszczące aktualizacje
+        \item Atomowe aktualizacje
     \end{itemize}
 \end{frame}
 
@@ -39,25 +40,23 @@
     \end{figure}
 \end{frame}
 
-\begin{frame}{deklaratywna konfiguracja}
-    \begin{figure}
-    \caption*{\small Plik wygenerowany poleceniem \texttt{nixos-generate-config --dir .} (bez komentarzy)}
-    \begin{minted}[fontsize=\small, linenos]{nix}
-    { config, lib, pkgs, ... }:
-
-    {
-      imports =
-        [ # Include the results of the hardware scan.
-          ./hardware-configuration.nix
-        ];
-      boot.loader.systemd-boot.enable = true;
-      boot.loader.efi.canTouchEfiVariables = true;
-      system.stateVersion = "24.11"; # Did you read the comment?
-    }
-    \end{minted}
-    \end{figure}
+\begin{frame}{Deklaratywna konfiguracja}
+    % \begin{figure}
+    %     \caption*{\small Plik wygenerowany poleceniem \texttt{nixos-generate-config --dir .} (bez komentarzy)}
+    % \end{figure}
+    \begin{lstlisting}[basicstyle=\small, caption=Generated Configuration]
+        { config, lib, pkgs, ... }:
+        {
+          imports =
+            [ # Include the results of the hardware scan.
+              ./hardware-configuration.nix
+            ];
+          boot.loader.systemd-boot.enable = true;
+          boot.loader.efi.canTouchEfiVariables = true;
+          system.stateVersion = "24.11"; # Did you read the comment?
+        }
+    \end{lstlisting}
 \end{frame}
-
 
 \begin{frame}{Nix - Menedżer pakietów}
     \begin{itemize}
@@ -164,11 +163,12 @@
         \item Ansible
         \item Docker
         \item Fedora Silverblue
-        \item asdf,mise,
+        \item asdf, mise
         \item Flatpak, Appimage, Snap
         \item Brew
     \end{itemize}
 \end{frame}
+
 \begin{frame}{Podsumowanie i pytania}
     \begin{itemize}
         \item Podsumowanie korzyści NixOS

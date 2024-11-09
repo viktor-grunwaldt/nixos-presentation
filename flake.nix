@@ -15,20 +15,30 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
         tex = pkgs.texlive.combine {
-          inherit (pkgs.texlive) scheme-small latex-bin latexmk beamer polski minted;
+          inherit (pkgs.texlive)
+            scheme-small
+            latex-bin
+            latexmk
+            beamer
+            polski
+            listings
+            # minted
+            ;
         };
       in
       rec {
-        devShells.default = with pkgs; mkShell {
-          packages = [
-            texlab            
-            inkscape
-            imagemagick
-          ];
-          shellHook = ''
-            fish -C "source ~/.config/home-manager/venv.fish" -i && exit
-          '';
-        };
+        devShells.default =
+          with pkgs;
+          mkShell {
+            packages = [
+              texlab
+              inkscape
+              imagemagick
+            ];
+            shellHook = ''
+              fish -C "source ~/.config/home-manager/venv.fish" -i && exit
+            '';
+          };
         packages = {
           document = pkgs.stdenvNoCC.mkDerivation rec {
             name = "latex-beamer-document";
@@ -36,7 +46,8 @@
             buildInputs = [
               pkgs.coreutils
               tex
-              python311Packages.pygments
+              # pkgs.python311Packages.pygments
+              # pkgs.which # minted
             ];
             phases = [
               "unpackPhase"
