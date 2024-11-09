@@ -40,18 +40,18 @@
     \end{figure}
 \end{frame}
 
-\begin{frame}{Deklaratywna konfiguracja}
+\begin{frame}{Atomowe aktualizacje}
     \begin{figure}
-        \includegraphics[width=\linewidth]{./assets/configuration.png}
-        \caption*{\scriptsize Minimalna konfiguracja wygenerowana poleceniem \texttt{nixos-generate-config --dir .}}
+        \includegraphics[width=\linewidth]{./assets/rebuild.drawio.png}
+        \caption*{\scriptsize uproszczone działanie polecenia \texttt{nixos-rebuild}}
     \end{figure}
 \end{frame}
 
-\begin{frame}{Nix - Menedżer pakietów}
+\begin{frame}{Nix - Menadżer pakietów}
     \begin{itemize}
         \item Functional package management
         \item Izolacja pakietów
-        \item `/nix/store`
+        \item \texttt{`/nix/store`}
     \end{itemize}
 \end{frame}
 
@@ -63,18 +63,32 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Deklaratywna konfiguracja}
+    \begin{figure}
+        \includegraphics[width=\linewidth]{./assets/configuration.png}
+        \caption*{\scriptsize Minimalna konfiguracja wygenerowana poleceniem \texttt{nixos-generate-config --dir .} (komentarze zostały usunięte)}
+    \end{figure}
+\end{frame}
+
 \begin{frame}{System budowania i kompilowania}
     \begin{itemize}
         \item Derywacje
         \item Zależności i hermetyzacja
-        \item Nie zmienność
+        \item Reprodukowalność
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Zaawansowane funkcje NixOS}
+\begin{frame}{Deklaratywna konfiguracja}
+    \begin{figure}
+        \includegraphics[width=\linewidth]{./assets/derivation.png}
+        \caption*{\scriptsize budowanie pakietu jako funkcja}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Funkcje NixOS}
     \begin{itemize}
         \item Rollbacki systemowe
-        \item Bezpieczne aktualizacje
+        \item Stabilne aktualizacje
         \item Wersje pakietów
     \end{itemize}
 \end{frame}
@@ -82,14 +96,14 @@
 \begin{frame}{Przykłady zastosowań NixOS}
     \begin{itemize}
         \item CI/CD
-        \item Zarządzanie infrastrukturą
-        \item Kontenery i VM
+        \item Zarządzanie infrastrukturą (modularne konfiguracje)
+        \item Deklaracja kontenerów i VM
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Zalety i wyzwania}
     \begin{itemize}
-        \item Zalety: deterministyczne środowisko, stabilność
+        \item Zalety: deterministyczne środowisko, stabilność, bleeding edge
         \item Wyzwania: krzywa uczenia się, kompatybilność
     \end{itemize}
 \end{frame}
@@ -101,8 +115,30 @@
     \end{figure}
 \end{frame}
 
+\begin{frame}{Wyzwania: krzywa uczenia się - Źródła}
+    \begin{itemize}
+        \item nixos wiki
+        \item nix pills
+        \item zero to nix
+        \item nix.dev
+        \item nix manual
+        \item official nixos wiki
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Narzędzia konsolowe}
+    \begin{itemize}
+        \item nix shell
+        \item nix develop
+        \item nix build
+        \item nix gc
+        \item devenv
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{Narzędzia związane z NixOS}
     \begin{itemize}
+        \item nixpkgs
         \item flake + experimental-cli
         \item disko
         \item nixos-anywhere
@@ -111,12 +147,6 @@
         \item guix
         \item nixos-alien
         \item nixos-sops
-        \item nixos wiki
-        \item nix pills
-        \item zero to nix
-        \item nix.dev
-        \item nix manual
-        \item official nixos wiki
         \item \{lang\}2nix
     \end{itemize}
 \end{frame}
@@ -124,18 +154,25 @@
 \begin{frame}{Narzędzia związane z NixOS 2}
     \begin{itemize}
         \item hydra
-        \item nix shell
-        \item nix develop
-        \item nix build
-        \item nix gc
-        \item devenv
         \item devbox
         \item cachix
         \item overlays
         \item pins/npins
-        \item nixpkgs
         \item nixbsd
         \item lanzaboote
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Podobne projekty}
+    \begin{itemize}
+        \item Ansible
+        \item Docker/Podman
+        \item Kubernetes (?)
+        \item Fedora Silverblue
+        \item asdf, mise
+        \item Flatpak, Appimage, Snap
+        \item Brew, winget
+        \item pacman, apt, rpm, portage
     \end{itemize}
 \end{frame}
 
@@ -144,17 +181,6 @@
         \item Kompilacja `nano` za pomocą derywacji
         \item Niestandardowa derywacja
         \item `nixos-rebuild switch`
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Podobne narzędzia}
-    \begin{itemize}
-        \item Ansible
-        \item Docker
-        \item Fedora Silverblue
-        \item asdf, mise
-        \item Flatpak, Appimage, Snap
-        \item Brew
     \end{itemize}
 \end{frame}
 
