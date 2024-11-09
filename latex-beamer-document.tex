@@ -4,7 +4,7 @@
 \usepackage{subcaption}
 \usepackage{hyperref}
 % \usepackage{minted}
-\usepackage{listings}
+% \usepackage{listings}
 \usepackage{polski}
 
 % build logs whispered to me that it's not needed, but I'll keep it just in case
@@ -41,21 +41,10 @@
 \end{frame}
 
 \begin{frame}{Deklaratywna konfiguracja}
-    % \begin{figure}
-    %     \caption*{\small Plik wygenerowany poleceniem \texttt{nixos-generate-config --dir .} (bez komentarzy)}
-    % \end{figure}
-    \begin{lstlisting}[basicstyle=\small, caption=Generated Configuration]
-        { config, lib, pkgs, ... }:
-        {
-          imports =
-            [ # Include the results of the hardware scan.
-              ./hardware-configuration.nix
-            ];
-          boot.loader.systemd-boot.enable = true;
-          boot.loader.efi.canTouchEfiVariables = true;
-          system.stateVersion = "24.11"; # Did you read the comment?
-        }
-    \end{lstlisting}
+    \begin{figure}
+        \includegraphics[width=\linewidth]{./assets/configuration.png}
+        \caption*{\scriptsize Minimalna konfiguracja wygenerowana poleceniem \texttt{nixos-generate-config --dir .}}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{Nix - Menedżer pakietów}
