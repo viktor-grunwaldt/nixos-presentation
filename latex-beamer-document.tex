@@ -55,6 +55,13 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{\texttt{`/nix/store`}}
+    \begin{figure}
+        \caption*{\tiny Źródło: matthew-croughan, \url{https://www.reddit.com/r/NixOS/comments/x1sfff/nixstore/}}
+        \includegraphics[width=0.5\linewidth]{./assets/nix-store.png}
+    \end{figure}
+\end{frame}
+
 \begin{frame}{Deklaratywna konfiguracja systemu}
     \begin{itemize}
         \item Plik `configuration.nix`
@@ -104,10 +111,21 @@
 \begin{frame}{Zalety i wyzwania}
     \begin{itemize}
         \item Zalety: deterministyczne środowisko, stabilność, bleeding edge
-        \item Wyzwania: krzywa uczenia się, kompatybilność
+        \item Wyzwania: krzywa uczenia się, kompatybilność, "wieczna beta"
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Zalety: stabilność + bleeding edge}
+
+\begin{table}[]
+\begin{tabular}{c|c|c|}
+\cline{2-3}
+                                         & stare paczki & bleeding edge \\ \hline
+\multicolumn{1}{|c|}{stabilny system}    & debian       & nixos         \\ \hline
+\multicolumn{1}{|c|}{niestabilny system} & windows?     & gentoo        \\ \hline
+\end{tabular}
+\end{table}
+\end{frame}
 \begin{frame}{Wyzwania: krzywa uczenia się}
     \begin{figure}
         \includegraphics[width=0.75\linewidth, height=0.75\textheight]{./assets/nixoscurve.jpg}
@@ -123,16 +141,17 @@
         \item nix.dev
         \item nix manual
         \item official nixos wiki
+        \item youtube: @vimjoyer, @Ampersand-xc9jp
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Narzędzia konsolowe}
+\begin{frame}{Główne narzędzia konsolowe}
     \begin{itemize}
-        \item nix shell
-        \item nix develop
-        \item nix build
-        \item nix gc
-        \item devenv
+        \item \texttt{nix shell}
+        \item \texttt{nix develop}
+        \item \texttt{nix build}
+        \item \texttt{nix-store --gc / nix-collect-garbage -d}
+        \item \texttt{devenv}
     \end{itemize}
 \end{frame}
 
@@ -160,6 +179,7 @@
         \item pins/npins
         \item nixbsd
         \item lanzaboote
+        \item btrfs, zfs
     \end{itemize}
 \end{frame}
 
