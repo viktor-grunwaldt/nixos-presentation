@@ -108,11 +108,19 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Zalety i wyzwania}
-    \begin{itemize}
-        \item Zalety: deterministyczne środowisko, stabilność, bleeding edge
-        \item Wyzwania: krzywa uczenia się, kompatybilność, "wieczna beta"
-    \end{itemize}
+\begin{frame}{Zalety i wady}
+\begin{table}[]
+    \begin{tabular}{|p{0.45\textwidth}|p{0.45\textwidth}|}
+        \hline
+        \textbf{Zalety} & \textbf{Wady} \\
+        \hline
+        deterministyczne środowisko & krzywa uczenia się \\
+        stabilność                  & kompatybilność \\
+        bleeding edge               & "wieczna beta" \\
+                                    & prędkość \\
+        \hline
+    \end{tabular}
+\end{table}
 \end{frame}
 
 \begin{frame}{Zalety: stabilność + bleeding edge}
@@ -136,11 +144,12 @@
 \begin{frame}{Wyzwania: krzywa uczenia się - Źródła}
     \begin{itemize}
         \item nixos wiki
+        \item official nixos wiki
         \item nix pills
         \item zero to nix
         \item nix.dev
         \item nix manual
-        \item official nixos wiki
+        \item nixos discourse/matrix/discord
         \item youtube: @vimjoyer, @Ampersand-xc9jp
     \end{itemize}
 \end{frame}
@@ -150,8 +159,9 @@
         \item \texttt{nix shell}
         \item \texttt{nix develop}
         \item \texttt{nix build}
+        \item \texttt{nix search}
+        \item \texttt{nixos-rebuild}
         \item \texttt{nix-store --gc / nix-collect-garbage -d}
-        \item \texttt{devenv}
     \end{itemize}
 \end{frame}
 
@@ -159,9 +169,9 @@
     \begin{itemize}
         \item nixpkgs
         \item flake + experimental-cli
+        \item home-manager
         \item disko
         \item nixos-anywhere
-        \item home-manager
         \item lix/tvix
         \item guix
         \item nixos-alien
@@ -173,6 +183,7 @@
 \begin{frame}{Narzędzia związane z NixOS 2}
     \begin{itemize}
         \item hydra
+        \item devenv
         \item devbox
         \item cachix
         \item overlays
@@ -198,9 +209,9 @@
 
 \begin{frame}{Demo na żywo}
     \begin{itemize}
-        \item Kompilacja `nano` za pomocą derywacji
-        \item Niestandardowa derywacja
-        \item `nixos-rebuild switch`
+    \item Kompilacja `swiv` za pomocą derywacji\\
+        \url{https://github.com/viktor-grunwaldt/swiv}\\
+    \item Użycie \texttt{flake.nix} do budowy prezentacji
     \end{itemize}
 \end{frame}
 

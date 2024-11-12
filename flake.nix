@@ -35,9 +35,6 @@
               inkscape
               imagemagick
             ];
-            shellHook = ''
-              fish -C "source ~/.config/home-manager/venv.fish" -i && exit
-            '';
           };
         packages = {
           document = pkgs.stdenvNoCC.mkDerivation rec {
