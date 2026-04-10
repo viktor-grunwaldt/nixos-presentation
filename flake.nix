@@ -53,11 +53,18 @@
             ];
             buildPhase = ''
               export PATH="${pkgs.lib.makeBinPath buildInputs}";
-              mkdir -p .cache/texmf-var
-              rm -f ${name}.pdf
-              env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-                  SOURCE_DATE_EPOCH=${toString self.lastModified} \
-                  latexmk -interaction=nonstopmode -pdf -lualatex \
+              # Prevent LuaLaTeX from scanning host OS fonts (huge speedup)
+              export OSFONTDIR=""
+
+              # Copy the pre-built Nix texlive cache to our writable directory
+              export TEXMFVAR=$(mktemp -d)
+              cp -a ${tex}/share/texmf-var/* $TEXMFVAR/
+              chmod -R u+w $TEXMFVAR
+
+              export TEXMFHOME=.cache
+              export SOURCE_DATE_EPOCH=${toString self.lastModified}
+
+              latexmk -interaction=nonstopmode -pdf -lualatex \
                   -pretex="\pdfvariable suppressoptionalinfo 512\relax" \
                   -usepretex \
                   -shell-escape \
