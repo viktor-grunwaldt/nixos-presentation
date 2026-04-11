@@ -1,42 +1,55 @@
 {
   description = "LaTeX Document Demo";
-  inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
   outputs =
     {
       self,
       nixpkgs,
-      flake-utils,
     }:
-    with flake-utils.lib;
-    eachSystem allSystems (
-      system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-        tex = pkgs.texlive.combine {
-          inherit (pkgs.texlive)
-            scheme-small
-            latex-bin
-            latexmk
-            beamer
-            polski
-            listings
-            # minted
-            ;
-        };
-      in
-      rec {
-        devShells.default =
-          with pkgs;
-          mkShell {
-            packages = [
-              texlab
-              inkscape
-              imagemagick
-            ];
+    let
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+      ];
+      forAllSystems = with nixpkgs; (lib.genAttrs supportedSystems);
+    in
+    rec {
+      devShells = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          default = (
+            pkgs.mkShell {
+              packages = with pkgs; [
+                texlab
+                inkscape
+                imagemagick
+              ];
+            }
+          );
+        }
+      );
+      packages = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+          tex = pkgs.texlive.combine {
+            inherit (pkgs.texlive)
+              scheme-small
+              latex-bin
+              latexmk
+              beamer
+              polski
+              listings
+              # minted
+              ;
           };
-        packages = {
+        in
+        {
           document = pkgs.stdenvNoCC.mkDerivation rec {
             name = "latex-beamer-document";
             src = ./.;
@@ -75,8 +88,8 @@
               cp ${name}.pdf $out/
             '';
           };
-        };
-        defaultPackage = packages.document;
-      }
-    );
+        }
+      );
+      defaultPackage = forAllSystems (system: packages.${system}.document);
+    };
 }
